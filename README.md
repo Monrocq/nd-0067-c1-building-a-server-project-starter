@@ -9,6 +9,16 @@ The project serves two purposes: setting up scalable code and architecture for r
 - If you want to use this app as Dev Env --> `npm run develop`
 - If you want to use this app as Prod Env --> `npm run start`
 
+# Usage
+
+You can use the API like this :
+
+`http://localhost:YOUR_PORT/api/images?filename=FULL_IMAGE&width=WIDTH&height=HEIGHT `
+
+example :
+
+`http://localhost:3000/api/images?filename=fjord&width=200&height=200 `
+
 ## Instructions given
 
 Feel free to attempt to create this project based on the overview and rubric specifications. If you get stuck or prefer structured guidance -- here is a walkthrough to get you up and running!
