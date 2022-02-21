@@ -8,19 +8,19 @@ export async function getThumb(
 ): Promise<string> {
   let thumbPath: string = `${__dirname}/assets/thumbs/${fileName}_w-${width.toString()}_h-${height.toString()}.jpg`;
   return new Promise((resolve, reject) => {
-    fs.access(thumbPath, err => {
+    fs.access(thumbPath, (err) => {
       if (err) {
         sharp(`${__dirname}/assets/images/${fileName}.jpg`)
-        .resize(width, height)
-        .toFile(thumbPath, (err, _) => {
-          if (err) {
-            reject(err.message);
-          }
-          resolve(thumbPath);
-        });
+          .resize(width, height)
+          .toFile(thumbPath, (err, _) => {
+            if (err) {
+              reject(err.message);
+            }
+            resolve(thumbPath);
+          });
       } else {
         resolve(thumbPath);
       }
-    })
+    });
   });
 }

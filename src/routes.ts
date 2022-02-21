@@ -1,6 +1,6 @@
 import express from 'express';
 const routes = express.Router();
-import {getThumb} from './utilities'
+import { getThumb } from './utilities';
 
 routes.get('/', (req: express.Request, res: express.Response): any => {
   res
@@ -8,6 +8,7 @@ routes.get('/', (req: express.Request, res: express.Response): any => {
     .send(
       "Thank you to choose our app. Please add to the URL '/images?filename=FILENAME&width=WIDTH&height=HEIGHT' and replace uppercase content"
     );
+  return;
 });
 
 routes.get('/images', (req: express.Request, res: express.Response): any => {
@@ -16,6 +17,7 @@ routes.get('/images', (req: express.Request, res: express.Response): any => {
   let height: number = parseInt((req.query.height as string) || '0');
   if (!width || !height || !fileName.length) {
     res.status(400).send('Please check the parameters content');
+    return;
   }
   getThumb(fileName, width, height)
     .then((path) => res.status(200).sendFile(path))
